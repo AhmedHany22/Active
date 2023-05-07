@@ -1,29 +1,30 @@
 $(document).ready(function () {
-  let numEls = document.querySelectorAll(".owl-item").length;
-  let w = window.innerWidth;
-  let c = numEls * 200;
-  console.log("w: ", w);
-  console.log("c: ", c);
-  let box = document.querySelector(".bbb_viewed_item");
-  let width = box.clientWidth;
-  console.log(width);
+  let carouselItemsNum = document.querySelectorAll(".owl-item").length;
+  let winWidth = window.innerWidth;
+  let carouselWidth = carouselItemsNum * 200;
 
-  if (w >= c) {
+  if (1400 >= carouselWidth) {
     document.querySelector(".bbb_viewed_prev").classList.add("hidden");
     document.querySelector(".bbb_viewed_next").classList.add("hidden");
   }
+  if (carouselWidth >= winWidth) {
+    document.querySelector(".bbb_viewed_prev").classList.remove("hidden");
+    document.querySelector(".bbb_viewed_next").classList.remove("hidden");
+  }
+
+  console.log(winWidth, carouselWidth);
 
   if ($(".bbb_viewed_slider").length) {
     var viewedSlider = $(".bbb_viewed_slider");
 
     viewedSlider.owlCarousel({
-      loop: w <= c ? true : false,
+      loop: 1400 < carouselWidth ? true : winWidth <= carouselWidth ? true : false,
       margin: 30,
       slideBy: 200,
-      autoplay: false,
-      autoplayTimeout: 3000,
-      slideTransition: "linear",
+      autoplay: 1400 < carouselWidth ? true : winWidth <= carouselWidth ? true : false,
+      autoplayTimeout: 4000,
       autoplaySpeed: 2000,
+      slideTransition: "linear",
       autoplayHoverPause: true,
       nav: false,
       dots: false,
