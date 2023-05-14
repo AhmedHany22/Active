@@ -452,3 +452,7 @@ function account_delete_confirm_modal(delete_url) {
   jQuery("#account_delete_confirm").modal("show", { backdrop: "static" });
   document.getElementById("account_delete_link").setAttribute("href", delete_url);
 }
+function confirm_modal(delete_url) {
+  jQuery("#confirm-delete").modal("show", { backdrop: "static" });
+  document.getElementById("delete_link").setAttribute("href", delete_url);
+}
